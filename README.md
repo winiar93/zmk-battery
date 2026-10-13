@@ -23,4 +23,5 @@ Peripheral: 63%
 - notify-send from libnotify
   
 On Arch-based systems everything except libnotify is normally already there:
+
 `sudo pacman -S --needed bluez libnotify`
