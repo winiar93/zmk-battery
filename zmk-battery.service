@@ -1,0 +1,8 @@
+[Unit]
+Description=ZMK keyboard battery check
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/zmk-battery --notify
+# Exit code 2 means "keyboard not connected" - not a failure
+SuccessExitStatus=2

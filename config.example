@@ -1,0 +1,20 @@
+# zmk-battery configuration
+# Location: ~/.config/zmk-battery/config
+# This file is sourced by bash, so keep the KEY=value syntax (no spaces around =).
+
+# MAC address of the keyboard, as shown by `zmk-battery --list`
+# or `bluetoothctl devices`. Leave empty to auto-detect the keyboard
+# (a split keyboard with two battery values is preferred over a mouse or an
+# ordinary keyboard; the last one found is remembered as a fallback).
+DEVICE_MAC=""
+
+# Only used when DEVICE_MAC is empty: auto-detect only devices whose
+# Bluetooth name contains this text (case-insensitive), e.g. "corne".
+DEVICE_NAME=""
+
+# Notify when a battery drops below this percentage (used by --notify)
+THRESHOLD=20
+
+# Names for the battery values, in the order the keyboard reports them.
+# The central half (the one paired with the computer) normally comes first.
+LABELS=("Central" "Peripheral")
