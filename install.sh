@@ -16,7 +16,7 @@ UNIT_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user"
 MAC=""
 NAME=""
 THRESHOLD=""
-INTERVAL="30min"
+INTERVAL="15min"
 TIMER=true
 
 usage() {
