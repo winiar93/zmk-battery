@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Fake sleep: keeps the reconnect retry loop from slowing the tests down.
+exit 0

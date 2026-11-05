@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Fake bluetoothctl: records its arguments and never manages to connect.
+echo "$*" >>"$FAKE_BUS/bluetoothctl.log"
+exit 1
