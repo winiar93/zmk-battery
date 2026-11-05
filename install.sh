@@ -27,7 +27,7 @@ Options:
   --mac MAC         Keyboard MAC address (default: ask, or auto-detect)
   --name TEXT       Auto-detect only keyboards whose name contains TEXT
   --threshold N     Notify below N percent (default: 20)
-  --interval TIME   How often to check, systemd time span (default: 30min)
+  --interval TIME   How often to check, systemd time span (default: 15min)
   --no-timer        Install the command only, without the systemd timer
   -h, --help        Show this help
 EOF
@@ -78,6 +78,9 @@ set_conf() {
 command -v busctl >/dev/null || die "busctl not found (it is part of systemd)"
 if $TIMER; then
     command -v systemctl >/dev/null || die "systemctl not found (use --no-timer to skip the timer)"
+fi
+if ! command -v bluetoothctl >/dev/null; then
+    echo "Warning: bluetoothctl not found - install bluez-utils or bluez to reconnect the keyboard automatically." >&2
 fi
 if ! command -v notify-send >/dev/null; then
     echo "Warning: notify-send not found - install libnotify to get notifications." >&2
