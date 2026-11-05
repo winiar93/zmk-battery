@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Fake systemctl: records its arguments.
+echo "$*" >>"$FAKE_BUS/systemctl.log"

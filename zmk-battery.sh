@@ -277,7 +277,7 @@ count=0
 labels=("Left/Central" "Right/Peripheral" "Battery #3" "Battery #4")
 
 for path in "${CHAR_PATHS[@]}"; do
-  raw=$(busctl call org.bluez "$path" org.bluez.GattCharacteristic1 ReadValue a{sv} 0 2>/dev/null || true)
+  raw=$(busctl call org.bluez "$path" org.bluez.GattCharacteristic1 ReadValue 'a{sv}' 0 2>/dev/null || true)
 
   if [[ -z "$raw" ]]; then
     echo "Failed to read: $path" >&2

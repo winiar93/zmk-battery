@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Fake notify-send: records its arguments.
+echo "$*" >>"$FAKE_BUS/notify.log"

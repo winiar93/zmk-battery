@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Fake busctl: answers from the files that tests/run.sh writes to $FAKE_BUS.
+
+case "$1" in
+  tree)
+    # The real command draws a tree in front of each path
+    sed 's/^/├─/' "$FAKE_BUS/tree"
+    ;;
+  get-property)
+    # get-property org.bluez PATH INTERFACE PROPERTY
+    line=$(grep -F -- "$3 $4 $5=" "$FAKE_BUS/props" | head -n1)
+    [[ -n "$line" ]] || exit 1
+    echo "${line#*=}"
+    ;;
+  call)
+    # call org.bluez PATH INTERFACE ReadValue a{sv} 0
+    line=$(grep -F -- "$3 " "$FAKE_BUS/levels" | head -n1)
+    [[ -n "$line" ]] || exit 1
+    echo "ay 1 ${line##* }"
+    ;;
+  *)
+    echo "busctl stub: unexpected command: $*" >&2
+    exit 1
+    ;;
+esac
