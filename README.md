@@ -11,20 +11,20 @@ Peripheral: 63%
 
 # Why zmk-battery?
 `zmk-battery` is for users who only want a warning before the keyboard dies. without running another app.
-- Nothing to build: it needs only bash
+- Nothing to build: it's a single bash script that uses tools already on most Linux desktops (see Requirements)
 - Nothing running in the background: Timer starts the script for a second then exits.
 - Works on any desktop: KDE Plasma, Gnome, Hyprland
 - It uses ZMK's standard battery level proxy
 
 
 # Requirements
-- BlueZ
-- sstemd
-- notify-send from libnotify
-  
-On Arch-based systems everything except libnotify is normally already there:
+- BlueZ, including `bluetoothctl` (optional, used to reconnect the keyboard automatically)
+- systemd
+- notify-send from libnotify (optional, used for notifications)
 
-`sudo pacman -S --needed bluez libnotify`
+On Arch-based systems, install the packages that may be missing:
+
+`sudo pacman -S --needed bluez bluez-utils libnotify`
 
 # Installation
 
